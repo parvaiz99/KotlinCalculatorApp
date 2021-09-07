@@ -162,7 +162,7 @@ class MainActivity : AppCompatActivity() {
 
         }else {
             var tNo = edtTxt.text.toString()
-            var finNo: BigDecimal? = null
+            var finNo: Any? = null
             when (op) {
                 "*" -> {
                     var i = tNo.indexOf("*") + 1
@@ -170,9 +170,16 @@ class MainActivity : AppCompatActivity() {
                     finNo = (oldNo.toFloat() * newNo.toFloat()).toBigDecimal()
                 }
                 "/" -> {
+
                     var i = tNo.indexOf("/") + 1
                     var newNo = tNo.substring(startIndex = i)
+                    if(newNo.toInt()==0){
+
+                        finNo = "Invalid"
+                    }else{
+
                     finNo = (oldNo.toFloat() / newNo.toFloat()).toBigDecimal()
+                    }
                 }
                 "+" -> {
                     var i = tNo.indexOf("+") + 1
